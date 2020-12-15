@@ -5,7 +5,7 @@
 import sys
 from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
-from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut , table0_pre , freq_word_bar
+from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut , freq_word_bar
 
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 #                                                    LAYOUT HOME                                                                          #
@@ -66,7 +66,7 @@ layout1 = html.Div(
                         html.Br(),
                         html.Br(),
                         dcc.Graph(figure=freq_word_bar),
-                        table0_pre
+                        table0_brut
                         ]),
                         html.Article(style={'padding-left':'5vw','display':'flex','width':'20vw'},
                             children=[               
@@ -91,7 +91,7 @@ layout2 =  html.Div(
                 children=[dbc.Tabs(
     [
         dbc.Tab(table0_brut, label="Tab 1"),
-        dbc.Tab(table0_pre, label="Tab 2"),
+        dbc.Tab(table0_brut, label="Tab 2"),
     ]
 ) ]
 )

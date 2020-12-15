@@ -111,36 +111,36 @@ table0_brut = dash_table.DataTable(
                                         'fontWeight': 'bold',
                                         'color':'white'})
 
-table0_pre = dash_table.DataTable(
-                                    columns=[{'id': c, 'name': c} for c in df0_pre.columns],
-                                    data= df0_pre.to_dict('records'),
-                                    #Style table as list view
-                                    #style_as_list_view=True,
-                                    fixed_rows={'headers': True},
-                                    # fixed_columns={'headers': True, 'data' :1},
-                                    export_format='csv',
-                                    style_table={'opacity':'0.80',
-                                                'maxHeight': '50ex',
-                                                'overflow': 'scrol',
-                                                'width': '100%',    
-                                                'minWidth': '100%',
-                                                'margin-left':'auto',
-                                                'margin-right':'auto'},
-                                    #Cell dim + textpos
-                                    style_cell_conditional=[{'height': 'auto',
-                                        # all three widths are needed
-                                        'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
-                                        'whiteSpace': 'normal','textAlign':'center'}],
-                                    #Line strip
-                                    style_cell={'color': 'black'},
-                                    # page_size = 15,
-                                    style_data_conditional=[{
-                                            'if': {'row_index': 'odd'},
-                                            'backgroundColor': 'rgb(248, 248, 248)'}],
-                                    style_header={
-                                        'backgroundColor': 'rgb(50, 50, 50)',
-                                        'fontWeight': 'bold',
-                                        'color':'white'})
+# table0_pre = dash_table.DataTable(
+#                                     columns=[{'id': c, 'name': c} for c in df0_pre.columns],
+#                                     data= df0_pre.to_dict('records'),
+#                                     #Style table as list view
+#                                     #style_as_list_view=True,
+#                                     fixed_rows={'headers': True},
+#                                     # fixed_columns={'headers': True, 'data' :1},
+#                                     export_format='csv',
+#                                     style_table={'opacity':'0.80',
+#                                                 'maxHeight': '50ex',
+#                                                 'overflow': 'scrol',
+#                                                 'width': '100%',    
+#                                                 'minWidth': '100%',
+#                                                 'margin-left':'auto',
+#                                                 'margin-right':'auto'},
+#                                     #Cell dim + textpos
+#                                     style_cell_conditional=[{'height': 'auto',
+#                                         # all three widths are needed
+#                                         'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+#                                         'whiteSpace': 'normal','textAlign':'center'}],
+#                                     #Line strip
+#                                     style_cell={'color': 'black'},
+#                                     # page_size = 15,
+#                                     style_data_conditional=[{
+#                                             'if': {'row_index': 'odd'},
+#                                             'backgroundColor': 'rgb(248, 248, 248)'}],
+#                                     style_header={
+#                                         'backgroundColor': 'rgb(50, 50, 50)',
+#                                         'fontWeight': 'bold',
+#                                         'color':'white'})
                             
 #------------------------------------------------------GRAPH------------------------------------------------------------------------------#
 
