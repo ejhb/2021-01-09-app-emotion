@@ -21,12 +21,12 @@ import seaborn as sns
 import plotly.graph_objs as go
 import plotly as py
 from plotly.offline import init_notebook_mode, iplot, plot
-#NLP
-import nltk
-from nltk.corpus import stopwords , wordnet as wn
-from nltk import wordpunct_tokenize , WordNetLemmatizer ,sent_tokenize ,  word_tokenize
-from nltk.stem import PorterStemmer , LancasterStemmer
-from nltk.stem.snowball import SnowballStemmer  
+#NLP ISSUE WITH HEROKU
+# # # import nltk   
+# # # from nltk.corpus import stopwords , wordnet as wn    
+# # # from nltk import wordpunct_tokenize , WordNetLemmatizer ,sent_tokenize ,  word_tokenize
+# # # from nltk.stem import PorterStemmer , LancasterStemmer
+# # # from nltk.stem.snowball import SnowballStemmer  
 #Dash
 import dash_core_components as dcc
 import dash_html_components as html
