@@ -49,3 +49,4 @@ tqdm==4.54.1
 urllib3==1.25.8
 webencodings==0.5.1
 Werkzeug==1.0.1
+seaborn==0.10.0
