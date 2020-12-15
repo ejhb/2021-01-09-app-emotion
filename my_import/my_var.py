@@ -6,25 +6,25 @@ from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
 #------------------------------------------------------DATAFRAME--------------------------------------------------------------------------#
 df0_brut = pd.read_csv('./data/emotion_final.csv')
-df0_pre = pd.read_csv('./data/emotion_final.csv')
+# # df0_pre = pd.read_csv('./data/emotion_final.csv')
 
-exclude = set(string.punctuation) # exclude = punctuation strings
-stop_word = stopwords.words('english') # we choosing stop words of english dict
-stop_word_punct = stop_word.extend(exclude) # we add strings punctions to stop word dict
-lemma = WordNetLemmatizer()
-stemmer = SnowballStemmer("english") # we choosing the language english for the stemmization 
-porter = PorterStemmer() 
-lancaster=LancasterStemmer()
+# # exclude = set(string.punctuation) # exclude = punctuation strings
+# # stop_word = stopwords.words('english') # we choosing stop words of english dict
+# # stop_word_punct = stop_word.extend(exclude) # we add strings punctions to stop word dict
+# # lemma = WordNetLemmatizer()
+# # stemmer = SnowballStemmer("english") # we choosing the language english for the stemmization 
+# # porter = PorterStemmer() 
+# # lancaster=LancasterStemmer()
 
-df0_pre['Text'] = df0_pre.apply(lambda row: word_tokenize(row['Text']), axis=1) # Tokenization
-df0_pre['Text'] = df0_pre['Text'].apply(lambda x: [item for item in x if item not in stop_word]) # Stop wordization :) coucou anne-laure
-df0_pre['Text'] = [[lemma.lemmatize(word) for word in each if word not in stop_word] for each in df0_pre['Text']]  # Lemmization
-# df_pre['Text'] = df1['Text'].apply(lambda x: [stemmer.stem(y) for y in x]) # Stem every word. with snowball('english')
-# df_pre['Text'] = df1['Text'].apply(lambda x: [porter.stem(y) for y in x]) # Stem every word. with porter
-# df_pre['Text'] = df1['Text'].apply(lambda x: [lancaster.stem(y) for y in x]) # Stem every word. with lancaster
-dz = df0_pre['Text']
-dz = [[' '.join(i)][0] for i in dz] 
-df0_pre['Text'] = dz
+# # df0_pre['Text'] = df0_pre.apply(lambda row: word_tokenize(row['Text']), axis=1) # Tokenization
+# # df0_pre['Text'] = df0_pre['Text'].apply(lambda x: [item for item in x if item not in stop_word]) # Stop wordization :) coucou anne-laure
+# # df0_pre['Text'] = [[lemma.lemmatize(word) for word in each if word not in stop_word] for each in df0_pre['Text']]  # Lemmization
+# # # df_pre['Text'] = df1['Text'].apply(lambda x: [stemmer.stem(y) for y in x]) # Stem every word. with snowball('english')
+# # # df_pre['Text'] = df1['Text'].apply(lambda x: [porter.stem(y) for y in x]) # Stem every word. with porter
+# # # df_pre['Text'] = df1['Text'].apply(lambda x: [lancaster.stem(y) for y in x]) # Stem every word. with lancaster
+# # dz = df0_pre['Text']
+# # dz = [[' '.join(i)][0] for i in dz] 
+# # df0_pre['Text'] = dz
 
 
 #-------------------------------------------------------MARKDOWN--------------------------------------------------------------------------#
