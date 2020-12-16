@@ -4,6 +4,8 @@ from app import app
 from layouts import layoutHome,layout1, layout2 ,layout3
 # from my_import.my_var import table0_brut , table0_pre 
 
+
+
 @app.callback(Output('page-content', 'children'),
               Input('url', 'pathname'))
 def display_page(pathname):

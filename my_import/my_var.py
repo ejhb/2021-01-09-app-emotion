@@ -6,8 +6,9 @@ from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
 #------------------------------------------------------DATAFRAME--------------------------------------------------------------------------#
 df0_brut = pd.read_csv('./data/emotion_final.csv')
-# # df0_pre = pd.read_csv('./data/emotion_final.csv')
 
+# # df0_pre = pd.read_csv('./data/emotion_final.csv')
+df1_brut = pd.read_csv('./data/text_emotion.csv')
 # # exclude = set(string.punctuation) # exclude = punctuation strings
 # # stop_word = stopwords.words('english') # we choosing stop words of english dict
 # # stop_word_punct = stop_word.extend(exclude) # we add strings punctions to stop word dict
@@ -141,7 +142,37 @@ table0_brut = dash_table.DataTable(
 #                                         'backgroundColor': 'rgb(50, 50, 50)',
 #                                         'fontWeight': 'bold',
 #                                         'color':'white'})
-                            
+
+table1_brut = dash_table.DataTable(
+                                    columns=[{'id': c, 'name': c} for c in df1_brut.columns],
+                                    data= df1_brut.to_dict('records'),
+                                    #Style table as list view
+                                    #style_as_list_view=True,
+                                    fixed_rows={'headers': True},
+                                    # fixed_columns={'headers': True, 'data' :1},
+                                    export_format='csv',
+                                    style_table={'opacity':'0.80',
+                                                'maxHeight': '50ex',
+                                                'overflow': 'scrol',
+                                                'width': '100%',    
+                                                'minWidth': '100%',
+                                                'margin-left':'auto',
+                                                'margin-right':'auto'},
+                                    #Cell dim + textpos
+                                    style_cell_conditional=[{'height': 'auto',
+                                        # all three widths are needed
+                                        'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+                                        'whiteSpace': 'normal','textAlign':'center'}],
+                                    #Line strip
+                                    style_cell={'color': 'black'},
+                                    # page_size = 15,
+                                    style_data_conditional=[{
+                                            'if': {'row_index': 'odd'},
+                                            'backgroundColor': 'rgb(248, 248, 248)'}],
+                                    style_header={
+                                        'backgroundColor': 'rgb(50, 50, 50)',
+                                        'fontWeight': 'bold',
+                                        'color':'white'})
 #------------------------------------------------------GRAPH------------------------------------------------------------------------------#
 
 #------------------------------------------------------FIGURE1----------------------------------------------------------------------------#
@@ -158,7 +189,7 @@ freq_p1 = go.Bar(
                 x = x_word.head(30),
                 y = y_nbr,
                 name = "Le score universitaire pour le transfert de connaissances par pays",
-                marker = dict(color = 'rgba(255, 87, 51, 0.5)', line = dict(color ='rgb(0,0,0)',width =2.5)),
+                marker = dict(color = 'rgba(25,211,243 0.5)', line = dict(color ='rgb(222,226,230)',width =2.5)),
                 text = df_up['Word'])
 
 freq_lay_p1 = go.Layout(barmode = "group",
@@ -173,3 +204,16 @@ freq_lay_p1 = go.Layout(barmode = "group",
                     plot_bgcolor='rgba(0,0,0,0.65)')
 freq_word_bar = go.Figure(data = freq_p1 , layout = freq_lay_p1)
 
+#------------------------------------------------------FIGURE2----------------------------------------------------------------------------#
+
+emotion_hist = go.Figure(px.histogram(df0_brut, x="Emotion", color= "Emotion").update_xaxes(categoryorder ="total descending"))
+emotion_hist.update_layout(
+                 title = 'Histogramme des émotions',
+                  yaxis = dict(title = "Nombre d'entrées"),
+                  xaxis = dict(title = 'Emotion'),
+                  font=dict(
+                        family="sans serif",
+                        size=14,
+                        color="white"),
+                paper_bgcolor='rgba(0,0,0,0.65)',
+                plot_bgcolor='rgba(0,0,0,0.65)')

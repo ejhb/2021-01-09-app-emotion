@@ -5,7 +5,7 @@
 import sys
 from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
-from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut , freq_word_bar
+from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut ,table1_brut, freq_word_bar , emotion_hist
 
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 #                                                    LAYOUT HOME                                                                          #
@@ -62,11 +62,15 @@ layout1 = html.Div(
                 html.Section(   
                     style={'padding-left':'5vw','padding-right':'5vw','margin-bottom':'2vh'}, 
                     children=[
-                        table0_brut,
+                        dbc.Tabs([
+                        dbc.Tab(table0_brut, label="Kaggle Data"),
+                        dbc.Tab(table1_brut, label="yes Data"),
+                                    ]),
                         html.Br(),
                         html.Br(),
                         dcc.Graph(figure=freq_word_bar),
-                        table0_brut
+                        html.Br(),
+                        dcc.Graph(figure=emotion_hist)
                         ]),
                         html.Article(style={'padding-left':'5vw','display':'flex','width':'20vw'},
                             children=[               
@@ -88,12 +92,7 @@ layout1 = html.Div(
 
 layout2 =  html.Div(
                 style={'height': '320vh','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed'},
-                children=[dbc.Tabs(
-    [
-        dbc.Tab(table0_brut, label="Tab 1"),
-        dbc.Tab(table0_brut, label="Tab 2"),
-    ]
-) ]
+                children=[]
 )
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 #                                                   LAYOUT TREE                                                                           #
