@@ -12,8 +12,14 @@
 }
 .dash-spreadsheet .row {
     flex-wrap: nowrap;
-  }
+}
 
-.app-custom-bg {
-    /* The image used */
-    background-image: url("2020/11-november/30-universities/assets/pexels-jessica-lewis-583846.jpg");
+.bootstrap_buton {
+    font-size: 30px;
+    font-family: sans-serif;
+}
+.bootstrap_s_buton{
+    font-size: 20px;
+    font-family: sans-serif;
+    color : white;
+}

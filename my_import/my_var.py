@@ -75,8 +75,7 @@ md_source = dcc.Markdown('''
                 * [Tutoriel TAL pour les débutants : Classification de texte](https://www.actuia.com/contribution/victorbigand/tutoriel-tal-pour-les-debutants-classification-de-texte/)
                 * [Text Classification with NLTK and Scikit-Learn](https://bbengfort.github.io/tutorials/2016/05/19/text-classification-nltk-sckit-learn.html)
                 * [Use Sentiment Analysis With Python to Classify Movie Reviews](https://medium.com/neuronio/from-sentiment-analysis-to-emotion-recognition-a-nlp-story-bcc9d6ff61ae)
-                * [From Sentiment Analysis to Emotion Recognition: A NLP story](https://realpython.com/sentiment-analysis-python/#how-classification-works)
-                ''')
+                * [From Sentiment Analysis to Emotion Recognition: A NLP story](https://realpython.com/sentiment-analysis-python/#how-classification-works)''')
 
 
 #------------------------------------------------------DASHTABLE--------------------------------------------------------------------------#
@@ -91,7 +90,7 @@ table0_brut = dash_table.DataTable(
                                     export_format='csv',
                                     style_table={'opacity':'0.80',
                                                 'maxHeight': '50ex',
-                                                'overflow': 'scrol',
+                                                'overflow': 'scroll',
                                                 'width': '100%',    
                                                 'minWidth': '100%',
                                                 'margin-left':'auto',
@@ -153,9 +152,9 @@ table1_brut = dash_table.DataTable(
                                     export_format='csv',
                                     style_table={'opacity':'0.80',
                                                 'maxHeight': '50ex',
-                                                'overflow': 'scrol',
+                                                'overflow': 'scroll',
                                                 'width': '100%',    
-                                                'minWidth': '100%',
+                                                'minWidth': '1font-size: 40px;00%',
                                                 'margin-left':'auto',
                                                 'margin-right':'auto'},
                                     #Cell dim + textpos
@@ -217,3 +216,63 @@ emotion_hist.update_layout(
                         color="white"),
                 paper_bgcolor='rgba(0,0,0,0.65)',
                 plot_bgcolor='rgba(0,0,0,0.65)')
+
+
+#------------------------------------------------------NAVBAR----------------------------------------------------------------------------#
+# nav_bar = dbc.NavbarSimple(style={'opacity': 1,'font-size': '20px'},
+#     children=[
+#         dbc.NavItem(dbc.NavLink("Page 1", href='/apps/page1', style={'color':'blue'})),
+#         dbc.NavItem(dbc.NavLink("Page 2", href='/apps/page2', style={'color':'blue'})),
+#     ],
+#     brand="Homepage",
+#     brand_href='/',
+#     fixed = "top",
+#     fluid = True
+# )
+
+# search_bar = dbc.Row(
+#     [
+#         dbc.Col(dbc.Input(type="search", placeholder="Search")),
+#         dbc.Col(
+#             dbc.Button("Search", color="primary", className="ml-2"),
+#             width="auto",
+#         ),
+#     ],
+#     no_gutters=True,
+#     className="ml-auto flex-nowrap mt-3 mt-md-0",
+#     align="center",
+# )
+p1_buton = dbc.NavItem(dbc.NavLink("Page 1", href='/apps/page1', active=True, style={'margin-right':'5px'}, className="bootstrap_s_buton"))
+p2_buton = dbc.NavItem(dbc.NavLink("Page 2", href='/apps/page2', active=True, className="bootstrap_s_buton"))
+
+nav_bar = dbc.Navbar(
+    [
+        html.A(
+            # Use row and col to control vertical alignment of logo / brand
+            dbc.Row(
+                [
+                    dbc.Col(html.Img(src="/assets/favicon.ico",height = "40px" ,style={'margin-left':'50px'})),
+                    dbc.Col(dbc.NavbarBrand("HomePage", className="bootstrap_buton")),
+                ],
+                align="center",
+                no_gutters=True,
+            ),
+            href="/",
+        ),
+        dbc.NavbarToggler(id="navbar-toggler"),
+        dbc.Collapse(
+            dbc.Nav(style={'margin-left':'auto'},
+                    children=[
+                p1_buton,
+                p2_buton
+                ]
+                ,pills=True), 
+            id="navbar-collapse", 
+            navbar=True),
+    ],
+    color = "black",
+    style={'opacity':0.65},
+    fixed = "top",
+    dark = True
+
+)

@@ -5,7 +5,8 @@
 import sys
 from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
-from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut ,table1_brut, freq_word_bar , emotion_hist
+from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut ,table1_brut, freq_word_bar , emotion_hist , nav_bar 
+
 
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 #                                                    LAYOUT HOME                                                                          #
@@ -13,15 +14,17 @@ from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut ,table1_br
 
 #-------------------------------------------------------DASH------------------------------------------------------------------------------#
 layoutHome = html.Div(
-                style={'height': '220vh','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed'},
+                style={'width': '100%','height':'100%','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed','background-size': 'cover'},
                 children=[
-                    html.Div('La Roue des Emotions',style={'text-align':'center','font-size':'40px','padding':'30px'}),
+                    nav_bar,
+                    html.Br(),
+                    html.Br(),
+                    html.Br(),
+                    html.Div('La Roue des Emotions', className = "app-header"),
                     html.Section(
-                        style={'height':'70vh', 'display':'flex', 'justify-content':' space-around'}, 
+                        style={'padding-left':'5vw','padding-right':'5vw'}, 
                         children=[
-                            html.Div(
-                                style={'height':'70vh', 'width':'80vw','margin-top':'2vh','margin-bop':'2vh'}, 
-                                children=[md1,
+                                    md1,
                                     html.Div([
                                     dbc.Button("Page 1", color="primary",href="/apps/page1" ,id="loading-button"),
                                     dbc.Spinner(html.Div(id="loading-output"))]),
@@ -39,14 +42,11 @@ Un dashboard Dash permettra de visualiser et de comparer les performances issues
                                     dbc.Button("Page 3", color="primary",href="/apps/page2" ,id="loading-button"),
                                     dbc.Spinner(html.Div(id="loading-output"))]),
                                     html.Br(),
-                                    html.Div([
-                                    dbc.Button("Page 4", color="primary",href="/apps/page3" ,id="loading-button"),
-                                    dbc.Spinner(html.Div(id="loading-output"))]),
-                                    md_source
-                
-        ])
+                                    md_source,
+                                    html.Br(),
+                ])
     ])
-])
+
 
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 #                                                     LAYOUT ONE                                                                          #
@@ -56,15 +56,17 @@ Un dashboard Dash permettra de visualiser et de comparer les performances issues
 
 
 layout1 = html.Div(
-            style={'height': '320vh','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed'},
+            style={'width': '100%','height':'100%','background-position':'center center','background-size': 'cover','color':'white','backgroundImage': 'url(../assets/bg_default_wheel.png)','background-attachment':'fixed'},
             children=[
+                nav_bar,
                 html.Div('Page 1', className = "app-header"),
                 html.Section(   
                     style={'padding-left':'5vw','padding-right':'5vw','margin-bottom':'2vh'}, 
                     children=[
+                        html.Br(),
                         dbc.Tabs([
-                        dbc.Tab(table0_brut, label="Kaggle Data"),
-                        dbc.Tab(table1_brut, label="yes Data"),
+                        dbc.Tab(table0_brut, label="Kaggle Data",label_style={"color": "#00AEF9"}),
+                        dbc.Tab(table1_brut, label="Yes Data",label_style={"color": "#00AEF9",'size':'20px'}),
                                     ]),
                         html.Br(),
                         html.Br(),
@@ -91,9 +93,38 @@ layout1 = html.Div(
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 
 layout2 =  html.Div(
-                style={'height': '320vh','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed'},
-                children=[]
-)
+                style={'width': '100%','height':'100%','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed','background-size': 'cover'},
+                children=[
+                    nav_bar,
+                    html.Br(),
+                    html.Br(),
+                    html.Br(),
+                    html.Div('La Roue des Emotions', className = "app-header"),
+                    html.Section(
+                        style={'padding-left':'5vw','padding-right':'5vw'}, 
+                        children=[
+                                    md1,
+                                    html.Div([
+                                    dbc.Button("Page 1", color="primary",href="/apps/page1" ,id="loading-button"),
+                                    dbc.Spinner(html.Div(id="loading-output"))]),
+                                    html.Br(),
+                                    md2,
+                                    ##button data table
+                                    html.Div([
+                                    dbc.Button("Page 2", color="primary",href="/apps/page2" ,id="loading-button"),
+                                    dbc.Spinner(html.Div(id="loading-output"))]),
+                                    html.Br(),
+                                    md3,
+                                    dcc.Markdown('''## Critères de performance
+Un dashboard Dash permettra de visualiser et de comparer les performances issues de différents classifiers.'''),
+                                    html.Div([
+                                    dbc.Button("Page 3", color="primary",href="/apps/page2",id="loading-button"),
+                                    dbc.Spinner(html.Div(id="loading-output"))]),
+                                    html.Br(),
+                                    md_source,
+                                    html.Br(),
+                ])
+    ])
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 #                                                   LAYOUT TREE                                                                           #
 #-----------------------------------------------------------------------------------------------------------------------------------------#
