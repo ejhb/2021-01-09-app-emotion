@@ -1,9 +1,8 @@
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output , State
 import time
 from app import app
 from layouts import layoutHome,layout1, layout2 ,layout3
 from my_import.my_var import pipe0
-
 # from my_import.my_var import table0_brut , table0_pre 
 
 
@@ -22,14 +21,19 @@ def display_page(pathname):
     else:
         return '404'
         
-@app.callback(Output("output", "children"), [Input("input", "value")])
-def test(value):
+@app.callback(Output("output", "children"), 
+            [Input("submit-val", "n_clicks")],
+            [State('input','value')]
+)
+def update_output(n_clicks, value):
     text = [value]
-    if value is None:
-        return "Coco :"
-    else:
-        prediction = pipe0.predict(text)
-    return u"Emotion is : {}".format(prediction)
+    if n_clicks > 0:
+        if value is None :
+            return "Please satisfy me"
+        else :
+            prediction = pipe0.predict(text)    
+        return u'You have entered: \n{}'.format(prediction)
+
 
 @app.callback(
     Output("loading-output", "children"), [Input("loading-button", "n_clicks")])

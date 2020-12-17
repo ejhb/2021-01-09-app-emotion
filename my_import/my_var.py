@@ -10,6 +10,7 @@ df0_pre = pd.read_csv('./data/kaggle_emotion_pre.csv')
 df1_brut = pd.read_csv('./data/yes_emotion.csv')
 df1_pre = pd.read_csv('./data/yes_emotion_pre.csv')
 df0_pipe = pd.read_csv('./data/kaggle_pre.csv')
+df1_pipe = pd.read_csv('./data/yes_pre.csv')
 
 # df0_pre.rename(columns={'Unnamed: 0': 'id_auto'}, inplace=True)
 # df0_pre.drop(columns=['id_auto'])
@@ -251,6 +252,37 @@ table0_pipe = dash_table.DataTable(
                                         'backgroundColor': 'rgb(50, 50, 50)',
                                         'fontWeight': 'bold',
                                         'color':'white'})
+
+table1_pipe = dash_table.DataTable(
+                                    columns=[{'id': c, 'name': c} for c in df1_pipe[['Name',"Time/ms","F1 Score | Ecart",'Precision','Recall']]],
+                                    data= df1_pipe.to_dict('records'),
+                                    #Style table as list view
+                                    #style_as_list_view=True,
+                                    fixed_rows={'headers': True},
+                                    # fixed_columns={'headers': True, 'data' :1},
+                                    export_format='csv',
+                                    style_table={'opacity':'0.85',
+                                                'maxHeight': '50ex',
+                                                'overflow': 'scroll',
+                                                'width': '100%',    
+                                                'minWidth': '100%',
+                                                'margin-left':'auto',
+                                                'margin-right':'auto'},
+                                    #Cell dim + textpos
+                                    style_cell_conditional=[{'height': 'auto',
+                                        # all three widths are needed
+                                        'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+                                        'whiteSpace': 'normal','textAlign':'center'}],
+                                    #Line strip
+                                    style_cell={'color': 'black'},
+                                    # page_size = 15,
+                                    style_data_conditional=[{
+                                            'if': {'row_index': 'odd'},
+                                            'backgroundColor': 'rgb(248, 248, 248)'}],
+                                    style_header={
+                                        'backgroundColor': 'rgb(50, 50, 50)',
+                                        'fontWeight': 'bold',
+                                        'color':'white'})                                       
 #------------------------------------------------------GRAPH------------------------------------------------------------------------------#
 
 #------------------------------------------------------FIGURE1----------------------------------------------------------------------------#
@@ -297,6 +329,14 @@ emotion_hist.update_layout(
                 plot_bgcolor='rgba(0,0,0,0.70)')
 
 
+
+#------------------------------------------------------FIGURE3----------------------------------------------------------------------------#
+emotion2_hist = go.Figure(px.histogram(df1_brut, x="sentiment", color= "sentiment", title="Histogramme Emotion").update_xaxes(categoryorder ="total descending"))
+emotion_hist.update_layout(
+    paper_bgcolor='rgba(0,0,0,0.65)',
+    plot_bgcolor='rgba(0,0,0,0.65)')
+
+
 #------------------------------------------------------NAVBAR----------------------------------------------------------------------------#
 # nav_bar = dbc.NavbarSimple(style={'opacity': 1,'font-size': '20px'},
 #     children=[
@@ -330,7 +370,7 @@ nav_bar = dbc.Navbar(
             # Use row and col to control vertical alignment of logo / brand
             dbc.Row(
                 [
-                    dbc.Col(html.Img(src="/assets/favicon.ico",height = "35px" ,style={'margin-left':'50px'})),
+                    dbc.Col(html.Img(src="/assets/favicon.ico",height = "40px" ,style={'margin-left':'50px'})),
                     dbc.Col(dbc.NavbarBrand("HomePage", className="bootstrap_buton")),
                 ],
                 align="center",

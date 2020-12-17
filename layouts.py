@@ -5,7 +5,7 @@
 import sys
 from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
-from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut, table0_pre ,table1_brut, table1_pre, freq_word_bar , emotion_hist , nav_bar , table0_pipe 
+from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut, table0_pre ,table1_brut, table1_pre, freq_word_bar , emotion_hist , nav_bar , table0_pipe , table1_pipe 
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------#
@@ -74,9 +74,10 @@ layout1 = html.Div(
                         html.Br(),
                         dcc.Graph(figure=freq_word_bar),
                         html.Br(),
-                        dcc.Graph(figure=emotion_hist)
-                        ]),
-                        html.Article(style={'padding-left':'5vw','display':'flex','width':'20vw'},
+                        dcc.Graph(figure=emotion_hist),
+                        html.Br(),
+                        html.Br(),
+                        html.Article(style={'display':'flex','width':'20vw'},
                             children=[               
                                 html.Div([
                                 dbc.Button("Back to head", color="primary",href="/apps/page1" ,id="loading-button"),
@@ -85,10 +86,10 @@ layout1 = html.Div(
                                 html.Div(style={'margin-left':'0.5vw'},
                                         children=[
                                             dbc.Button("Back to home", color="primary",href="/" ,id="loading-button"),
-                                            dbc.Spinner(html.Div(id="loading-output"))
-                                            ])
-                                    ])
-                        
+                                            dbc.Spinner(html.Div(id="loading-output"))])
+                                            ]),
+                        html.Br(),
+                        ])
 ])
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 #                                                   LAYOUT TWO                                                                            #
@@ -99,17 +100,26 @@ layout2 =  html.Div(
                 children=[
                    nav_bar,
                    html.Br(),
-                html.Div('', className = "app-header"),
+                    html.Br(),
+                    html.Br(),
+                    html.Br(),
+                html.Div('Dataframe of pipeline result', className = "app-header"),
                 html.Section(   
                     style={'padding-left':'7vw','padding-right':'7vw'}, 
                     children=[
-                        table0_pipe,
+                    dbc.Tabs(children=[
+                        dbc.Tab(table0_pipe, label="Kaggle Data",tab_style={'background-color':'black','opacity':'0.70'},label_style={"color": "#00AEF9"},loading_state={'is_loading':'True'}),
+                        dbc.Tab(table1_pipe, label="Oui Data",tab_style={'background-color':'black','opacity':'0.65'},label_style={"color": "#00AEF9"},loading_state={'is_loading':'True'}),
+                    ]),
+                        html.Br(),
+                        html.Br(),
+                        html.Div('Input prediction made of Kaggle\'s dataset model', className = "app-header"),
                         dbc.Input(id="input", placeholder="Predict an emotion entering a single word", type="text"),
                         html.Br(),
+                        dbc.Button("Submit", color="secondary",id='submit-val', n_clicks=0),
                         html.P(id="output"),
-                        html.Div(id='app-2-display-value')
-                        ]),
-                        html.Article(style={'padding-left':'5vw','display':'flex','width':'20vw'},
+                        html.Div(id='app-2-display-value'),
+                        html.Article(style={'display':'flex','heigh':'15vw','width':'20vw'},
                             children=[               
                                 html.Div([
                                 dbc.Button("Back to head", color="primary",href="/apps/page1" ,id="loading-button"),
@@ -121,6 +131,7 @@ layout2 =  html.Div(
                                             dbc.Spinner(html.Div(id="loading-output"))
                                             ])
                                 ])
+                ])
 ])
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 #                                                   LAYOUT TREE                                                                           #
