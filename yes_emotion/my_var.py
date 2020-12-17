@@ -256,7 +256,6 @@ freq_p1 = go.Bar(
                 name = "Le score universitaire pour le transfert de connaissances par pays",
                 marker = dict(color = 'rgba(25,211,243 0.5)', line = dict(color ='rgb(222,226,230)',width =2.5)),
                 text = df_up['Word'])
-
 freq_lay_p1 = go.Layout(barmode = "group",
                   title = 'Fréquence d’apparition des mots ',
                   yaxis = dict(title = 'word frequency'),
@@ -265,8 +264,8 @@ freq_lay_p1 = go.Layout(barmode = "group",
                         family="sans serif",
                         size=14,
                         color="white"),
-                    paper_bgcolor='rgba(0,0,0,0.70)',
-                    plot_bgcolor='rgba(0,0,0,0.70)')
+                        paper_bgcolor='rgba(0,0,0,0.70)',
+                        plot_bgcolor='rgba(0,0,0,0.70)')
 freq_word_bar = go.Figure(data = freq_p1 , layout = freq_lay_p1)
 
 #------------------------------------------------------FIGURE2----------------------------------------------------------------------------#

@@ -28,6 +28,9 @@ def load_output(n):
         return 
     return 
 
+@app.callback(Output('page-content', 'children'),
+              Input('url', 'pathname'))
+
 # @app.callback(Output('tabs-example-content', 'children'),
 #               Input('tabs-example', 'value'))
 # def render_content(tab):
