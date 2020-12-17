@@ -130,7 +130,8 @@ layout2 =  html.Div(
                                             dbc.Button("Back to home", color="primary",href="/" ,id="loading-button"),
                                             dbc.Spinner(html.Div(id="loading-output"))
                                             ])
-                                ])
+                                ]),
+                        html.Br(),
                 ])
 ])
 #-----------------------------------------------------------------------------------------------------------------------------------------#
