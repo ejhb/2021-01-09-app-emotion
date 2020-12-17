@@ -5,7 +5,7 @@
 import sys
 from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
-from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut ,table1_brut, freq_word_bar , emotion_hist , nav_bar 
+from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut, table0_pre ,table1_brut, table1_pre, freq_word_bar , emotion_hist , nav_bar 
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------#
@@ -22,7 +22,7 @@ layoutHome = html.Div(
                     html.Br(),
                     html.Div('La Roue des Emotions', className = "app-header"),
                     html.Section(
-                        style={'padding-left':'5vw','padding-right':'5vw'}, 
+                        style={'padding-left':'8vw','padding-right':'8vw'}, 
                         children=[
                                     md1,
                                     html.Div([
@@ -59,14 +59,16 @@ layout1 = html.Div(
             style={'width': '100%','height':'100%','background-position':'center center','background-size': 'cover','color':'white','backgroundImage': 'url(../assets/bg_default_wheel.png)','background-attachment':'fixed'},
             children=[
                 nav_bar,
-                html.Div('Page 1', className = "app-header"),
+                html.Div('La page du oui', className = "app-header"),
                 html.Section(   
-                    style={'padding-left':'5vw','padding-right':'5vw','margin-bottom':'2vh'}, 
+                    style={'padding-left':'7vw','padding-right':'7vw'}, 
                     children=[
                         html.Br(),
                         dbc.Tabs([
                         dbc.Tab(table0_brut, label="Kaggle Data",label_style={"color": "#00AEF9"}),
-                        dbc.Tab(table1_brut, label="Yes Data",label_style={"color": "#00AEF9",'size':'20px'}),
+                        dbc.Tab(table0_pre, label="Kaggle Data NLP",label_style={"color": "#00AEF9",'size':'20px'}),
+                        dbc.Tab(table1_brut, label="Yes Data",label_style={"color": "#00AEF9"}),
+                        dbc.Tab(table1_pre, label="Yes Data NLP",label_style={"color": "#00AEF9",'size':'20px'}),
                                     ]),
                         html.Br(),
                         html.Br(),

@@ -6,9 +6,11 @@ from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
 #------------------------------------------------------DATAFRAME--------------------------------------------------------------------------#
 df0_brut = pd.read_csv('./data/emotion_final.csv')
+df0_pre = pd.read_csv('./data/emotion_final_pre.csv')
+df1_brut = pd.read_csv('./data/text_emotion.csv')
+df1_pre = pd.read_csv('./data/text_emotion_pre.csv')
 
 # # df0_pre = pd.read_csv('./data/emotion_final.csv')
-df1_brut = pd.read_csv('./data/text_emotion.csv')
 # # exclude = set(string.punctuation) # exclude = punctuation strings
 # # stop_word = stopwords.words('english') # we choosing stop words of english dict
 # # stop_word_punct = stop_word.extend(exclude) # we add strings punctions to stop word dict
@@ -26,8 +28,6 @@ df1_brut = pd.read_csv('./data/text_emotion.csv')
 # # dz = df0_pre['Text']
 # # dz = [[' '.join(i)][0] for i in dz] 
 # # df0_pre['Text'] = dz
-
-
 #-------------------------------------------------------MARKDOWN--------------------------------------------------------------------------#
 md1= dcc.Markdown('''## Contexte du projet
 Depuis quelques années, les dispositifs de communication médiatisée par ordinateur (CMO) sont massivement utilisés, aussi bien dans les activités professionnelles que personnelles. Ces dispositifs permettent à des participants distants physiquement de communiquer. La plupart implique une communication écrite médiatisée par ordinateur (CEMO) : forums de discussion, courrier électronique, messagerie instantanée. Les participants ne s’entendent pas et ne se voient pas mais peuvent communiquer par l’envoi de messages écrits, qui combinent, généralement, certaines caractéristiques des registres écrit et oral (Marcoccia, 2000a ; Marcoccia, Gauducheau, 2007 ; Riva, 2001).
@@ -111,36 +111,36 @@ table0_brut = dash_table.DataTable(
                                         'fontWeight': 'bold',
                                         'color':'white'})
 
-# table0_pre = dash_table.DataTable(
-#                                     columns=[{'id': c, 'name': c} for c in df0_pre.columns],
-#                                     data= df0_pre.to_dict('records'),
-#                                     #Style table as list view
-#                                     #style_as_list_view=True,
-#                                     fixed_rows={'headers': True},
-#                                     # fixed_columns={'headers': True, 'data' :1},
-#                                     export_format='csv',
-#                                     style_table={'opacity':'0.80',
-#                                                 'maxHeight': '50ex',
-#                                                 'overflow': 'scrol',
-#                                                 'width': '100%',    
-#                                                 'minWidth': '100%',
-#                                                 'margin-left':'auto',
-#                                                 'margin-right':'auto'},
-#                                     #Cell dim + textpos
-#                                     style_cell_conditional=[{'height': 'auto',
-#                                         # all three widths are needed
-#                                         'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
-#                                         'whiteSpace': 'normal','textAlign':'center'}],
-#                                     #Line strip
-#                                     style_cell={'color': 'black'},
-#                                     # page_size = 15,
-#                                     style_data_conditional=[{
-#                                             'if': {'row_index': 'odd'},
-#                                             'backgroundColor': 'rgb(248, 248, 248)'}],
-#                                     style_header={
-#                                         'backgroundColor': 'rgb(50, 50, 50)',
-#                                         'fontWeight': 'bold',
-#                                         'color':'white'})
+table0_pre = dash_table.DataTable(
+                                    columns=[{'id': c, 'name': c} for c in df0_pre.columns],
+                                    data= df0_pre.to_dict('records'),
+                                    #Style table as list view
+                                    #style_as_list_view=True,
+                                    fixed_rows={'headers': True},
+                                    # fixed_columns={'headers': True, 'data' :1},
+                                    export_format='csv',
+                                    style_table={'opacity':'0.80',
+                                                'maxHeight': '50ex',
+                                                'overflow': 'scrol',
+                                                'width': '100%',    
+                                                'minWidth': '100%',
+                                                'margin-left':'auto',
+                                                'margin-right':'auto'},
+                                    #Cell dim + textpos
+                                    style_cell_conditional=[{'height': 'auto',
+                                        # all three widths are needed
+                                        'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+                                        'whiteSpace': 'normal','textAlign':'center'}],
+                                    #Line strip
+                                    style_cell={'color': 'black'},
+                                    # page_size = 15,
+                                    style_data_conditional=[{
+                                            'if': {'row_index': 'odd'},
+                                            'backgroundColor': 'rgb(248, 248, 248)'}],
+                                    style_header={
+                                        'backgroundColor': 'rgb(50, 50, 50)',
+                                        'fontWeight': 'bold',
+                                        'color':'white'})
 
 table1_brut = dash_table.DataTable(
                                     columns=[{'id': c, 'name': c} for c in df1_brut.columns],
@@ -155,6 +155,38 @@ table1_brut = dash_table.DataTable(
                                                 'overflow': 'scroll',
                                                 'width': '100%',    
                                                 'minWidth': '1font-size: 40px;00%',
+                                                'margin-left':'auto',
+                                                'margin-right':'auto'},
+                                    #Cell dim + textpos
+                                    style_cell_conditional=[{'height': 'auto',
+                                        # all three widths are needed
+                                        'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+                                        'whiteSpace': 'normal','textAlign':'center'}],
+                                    #Line strip
+                                    style_cell={'color': 'black'},
+                                    # page_size = 15,
+                                    style_data_conditional=[{
+                                            'if': {'row_index': 'odd'},
+                                            'backgroundColor': 'rgb(248, 248, 248)'}],
+                                    style_header={
+                                        'backgroundColor': 'rgb(50, 50, 50)',
+                                        'fontWeight': 'bold',
+                                        'color':'white'})
+
+
+table1_pre = dash_table.DataTable(
+                                    columns=[{'id': c, 'name': c} for c in df1_pre.columns],
+                                    data= df1_pre.to_dict('records'),
+                                    #Style table as list view
+                                    #style_as_list_view=True,
+                                    fixed_rows={'headers': True},
+                                    # fixed_columns={'headers': True, 'data' :1},
+                                    export_format='csv',
+                                    style_table={'opacity':'0.80',
+                                                'maxHeight': '50ex',
+                                                'overflow': 'scroll',
+                                                'width': '100%',    
+                                                'minWidth': '100%',
                                                 'margin-left':'auto',
                                                 'margin-right':'auto'},
                                     #Cell dim + textpos
