@@ -103,7 +103,11 @@ layout2 =  html.Div(
                 html.Section(   
                     style={'padding-left':'7vw','padding-right':'7vw'}, 
                     children=[
-                        table0_pipe
+                        table0_pipe,
+                        dbc.Input(id="input", placeholder="Predict an emotion entering a single word", type="text"),
+                        html.Br(),
+                        html.P(id="output"),
+                        html.Div(id='app-2-display-value')
                         ]),
                         html.Article(style={'padding-left':'5vw','display':'flex','width':'20vw'},
                             children=[               

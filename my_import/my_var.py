@@ -5,11 +5,11 @@
 from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
 #------------------------------------------------------DATAFRAME--------------------------------------------------------------------------#
-df0_brut = pd.read_csv('./data/emotion_final.csv')
-df0_pre = pd.read_csv('./data/emotion_final_pre.csv')
-df1_brut = pd.read_csv('./data/text_emotion.csv')
-df1_pre = pd.read_csv('./data/text_emotion_pre.csv')
-df0_pipe = pd.read_csv('./data/prediction_pipe.csv')
+df0_brut = pd.read_csv('./data/kaggle_emotion.csv')
+df0_pre = pd.read_csv('./data/kaggle_emotion_pre.csv')
+df1_brut = pd.read_csv('./data/yes_emotion.csv')
+df1_pre = pd.read_csv('./data/yes_emotion_pre.csv')
+df0_pipe = pd.read_csv('./data/kaggle_pre.csv')
 
 # df0_pre.rename(columns={'Unnamed: 0': 'id_auto'}, inplace=True)
 # df0_pre.drop(columns=['id_auto'])
@@ -31,6 +31,19 @@ df0_pipe = pd.read_csv('./data/prediction_pipe.csv')
 # # dz = df0_pre['Text']
 # # dz = [[' '.join(i)][0] for i in dz] 
 # # df0_pre['Text'] = dz
+#-------------------------------------------------------INPUTPRED--------------------------------------------------------------------------#
+df0_brut = pd.read_csv('./data/kaggle_emotion.csv')
+targets = df0_brut['Emotion']
+corpus = df0_brut['Text']
+X_train, X_test, y_train, y_test = train_test_split(corpus, targets, random_state=0)
+
+pipe0 = Pipeline([
+    ('vect', CountVectorizer()),
+    ('sgd', SGDClassifier()),
+])
+pipe0.fit(X_train, y_train)
+
+
 #-------------------------------------------------------MARKDOWN--------------------------------------------------------------------------#
 md1= dcc.Markdown('''## Contexte du projet
 Depuis quelques années, les dispositifs de communication médiatisée par ordinateur (CMO) sont massivement utilisés, aussi bien dans les activités professionnelles que personnelles. Ces dispositifs permettent à des participants distants physiquement de communiquer. La plupart implique une communication écrite médiatisée par ordinateur (CEMO) : forums de discussion, courrier électronique, messagerie instantanée. Les participants ne s’entendent pas et ne se voient pas mais peuvent communiquer par l’envoi de messages écrits, qui combinent, généralement, certaines caractéristiques des registres écrit et oral (Marcoccia, 2000a ; Marcoccia, Gauducheau, 2007 ; Riva, 2001).
@@ -256,6 +269,7 @@ freq_p1 = go.Bar(
                 name = "Le score universitaire pour le transfert de connaissances par pays",
                 marker = dict(color = 'rgba(25,211,243 0.5)', line = dict(color ='rgb(222,226,230)',width =2.5)),
                 text = df_up['Word'])
+
 freq_lay_p1 = go.Layout(barmode = "group",
                   title = 'Fréquence d’apparition des mots ',
                   yaxis = dict(title = 'word frequency'),
@@ -264,8 +278,8 @@ freq_lay_p1 = go.Layout(barmode = "group",
                         family="sans serif",
                         size=14,
                         color="white"),
-                        paper_bgcolor='rgba(0,0,0,0.70)',
-                        plot_bgcolor='rgba(0,0,0,0.70)')
+                    paper_bgcolor='rgba(0,0,0,0.70)',
+                    plot_bgcolor='rgba(0,0,0,0.70)')
 freq_word_bar = go.Figure(data = freq_p1 , layout = freq_lay_p1)
 
 #------------------------------------------------------FIGURE2----------------------------------------------------------------------------#
