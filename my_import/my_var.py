@@ -9,7 +9,10 @@ df0_brut = pd.read_csv('./data/emotion_final.csv')
 df0_pre = pd.read_csv('./data/emotion_final_pre.csv')
 df1_brut = pd.read_csv('./data/text_emotion.csv')
 df1_pre = pd.read_csv('./data/text_emotion_pre.csv')
+df0_pipe = pd.read_csv('./data/prediction_pipe.csv')
 
+# df0_pre.rename(columns={'Unnamed: 0': 'id_auto'}, inplace=True)
+# df0_pre.drop(columns=['id_auto'])
 # # df0_pre = pd.read_csv('./data/emotion_final.csv')
 # # exclude = set(string.punctuation) # exclude = punctuation strings
 # # stop_word = stopwords.words('english') # we choosing stop words of english dict
@@ -90,7 +93,7 @@ table0_brut = dash_table.DataTable(
                                     export_format='csv',
                                     style_table={'opacity':'0.80',
                                                 'maxHeight': '50ex',
-                                                'overflow': 'scroll',
+                                                'overflow': 'scrol',
                                                 'width': '100%',    
                                                 'minWidth': '100%',
                                                 'margin-left':'auto',
@@ -112,7 +115,8 @@ table0_brut = dash_table.DataTable(
                                         'color':'white'})
 
 table0_pre = dash_table.DataTable(
-                                    columns=[{'id': c, 'name': c} for c in df0_pre.columns],
+                                    
+                                    columns=[{'id': c, 'name': c} for c in df0_pre[['Text','Emotion']]],
                                     data= df0_pre.to_dict('records'),
                                     #Style table as list view
                                     #style_as_list_view=True,
@@ -128,7 +132,7 @@ table0_pre = dash_table.DataTable(
                                                 'margin-right':'auto'},
                                     #Cell dim + textpos
                                     style_cell_conditional=[{'height': 'auto',
-                                        # all three widths are needed
+                                        #all three widths are needed
                                         'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
                                         'whiteSpace': 'normal','textAlign':'center'}],
                                     #Line strip
@@ -175,8 +179,38 @@ table1_brut = dash_table.DataTable(
 
 
 table1_pre = dash_table.DataTable(
-                                    columns=[{'id': c, 'name': c} for c in df1_pre.columns],
+                                    columns=[{'id': c, 'name': c} for c in df1_pre[['tweet_id','sentiment','author','content']]],
                                     data= df1_pre.to_dict('records'),
+                                    #Style table as list view
+                                    #style_as_list_view=True,
+                                    fixed_rows={'headers': True},
+                                    # fixed_columns={'headers': True, 'data' :1},
+                                    export_format='csv',
+                                    style_table={'opacity':'0.80',
+                                                'maxHeight': '50ex',
+                                                'overflow': 'scroll',
+                                                'width': '100%',    
+                                                'minWidth': '100%',
+                                                'margin-left':'auto',
+                                                'margin-right':'auto'},
+                                    #Cell dim + textpos
+                                    style_cell_conditional=[{'height': 'auto',
+                                        # all three widths are needed
+                                        'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+                                        'whiteSpace': 'normal','textAlign':'center'}],
+                                    #Line strip
+                                    style_cell={'color': 'black'},
+                                    # page_size = 15,
+                                    style_data_conditional=[{
+                                            'if': {'row_index': 'odd'},
+                                            'backgroundColor': 'rgb(248, 248, 248)'}],
+                                    style_header={
+                                        'backgroundColor': 'rgb(50, 50, 50)',
+                                        'fontWeight': 'bold',
+                                        'color':'white'})
+table0_pipe = dash_table.DataTable(
+                                    columns=[{'id': c, 'name': c} for c in df0_pipe[['Name',"Time/ms","F1 Score | Ecart",'Precision','Recall']]],
+                                    data= df0_pipe.to_dict('records'),
                                     #Style table as list view
                                     #style_as_list_view=True,
                                     fixed_rows={'headers': True},
@@ -283,7 +317,7 @@ nav_bar = dbc.Navbar(
             # Use row and col to control vertical alignment of logo / brand
             dbc.Row(
                 [
-                    dbc.Col(html.Img(src="/assets/favicon.ico",height = "40px" ,style={'margin-left':'50px'})),
+                    dbc.Col(html.Img(src="/assets/favicon.ico",height = "35px" ,style={'margin-left':'50px'})),
                     dbc.Col(dbc.NavbarBrand("HomePage", className="bootstrap_buton")),
                 ],
                 align="center",
@@ -302,8 +336,8 @@ nav_bar = dbc.Navbar(
             id="navbar-collapse", 
             navbar=True),
     ],
-    color = "black",
-    style={'opacity':0.65},
+    color ='black',
+    style = {'opacity':0.90},
     fixed = "top",
     dark = True
 
