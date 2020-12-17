@@ -91,7 +91,7 @@ table0_brut = dash_table.DataTable(
                                     fixed_rows={'headers': True},
                                     # fixed_columns={'headers': True, 'data' :1},
                                     export_format='csv',
-                                    style_table={'opacity':'0.80',
+                                    style_table={'opacity':'0.85',
                                                 'maxHeight': '50ex',
                                                 'overflow': 'scrol',
                                                 'width': '100%',    
@@ -123,7 +123,7 @@ table0_pre = dash_table.DataTable(
                                     fixed_rows={'headers': True},
                                     # fixed_columns={'headers': True, 'data' :1},
                                     export_format='csv',
-                                    style_table={'opacity':'0.80',
+                                    style_table={'opacity':'0.85',
                                                 'maxHeight': '50ex',
                                                 'overflow': 'scrol',
                                                 'width': '100%',    
@@ -154,7 +154,7 @@ table1_brut = dash_table.DataTable(
                                     fixed_rows={'headers': True},
                                     # fixed_columns={'headers': True, 'data' :1},
                                     export_format='csv',
-                                    style_table={'opacity':'0.80',
+                                    style_table={'opacity':'0.85',
                                                 'maxHeight': '50ex',
                                                 'overflow': 'scroll',
                                                 'width': '100%',    
@@ -186,7 +186,7 @@ table1_pre = dash_table.DataTable(
                                     fixed_rows={'headers': True},
                                     # fixed_columns={'headers': True, 'data' :1},
                                     export_format='csv',
-                                    style_table={'opacity':'0.80',
+                                    style_table={'opacity':'0.85',
                                                 'maxHeight': '50ex',
                                                 'overflow': 'scroll',
                                                 'width': '100%',    
@@ -216,7 +216,7 @@ table0_pipe = dash_table.DataTable(
                                     fixed_rows={'headers': True},
                                     # fixed_columns={'headers': True, 'data' :1},
                                     export_format='csv',
-                                    style_table={'opacity':'0.80',
+                                    style_table={'opacity':'0.85',
                                                 'maxHeight': '50ex',
                                                 'overflow': 'scroll',
                                                 'width': '100%',    
@@ -265,8 +265,8 @@ freq_lay_p1 = go.Layout(barmode = "group",
                         family="sans serif",
                         size=14,
                         color="white"),
-                    paper_bgcolor='rgba(0,0,0,0.65)',
-                    plot_bgcolor='rgba(0,0,0,0.65)')
+                    paper_bgcolor='rgba(0,0,0,0.70)',
+                    plot_bgcolor='rgba(0,0,0,0.70)')
 freq_word_bar = go.Figure(data = freq_p1 , layout = freq_lay_p1)
 
 #------------------------------------------------------FIGURE2----------------------------------------------------------------------------#
@@ -280,8 +280,8 @@ emotion_hist.update_layout(
                         family="sans serif",
                         size=14,
                         color="white"),
-                paper_bgcolor='rgba(0,0,0,0.65)',
-                plot_bgcolor='rgba(0,0,0,0.65)')
+                paper_bgcolor='rgba(0,0,0,0.70)',
+                plot_bgcolor='rgba(0,0,0,0.70)')
 
 
 #------------------------------------------------------NAVBAR----------------------------------------------------------------------------#

@@ -5,7 +5,7 @@
 import sys
 from my_import.my_lib import *
 from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
-from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut, table0_pre ,table1_brut, table1_pre, freq_word_bar , emotion_hist , nav_bar , table0_pipe
+from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut, table0_pre ,table1_brut, table1_pre, freq_word_bar , emotion_hist , nav_bar , table0_pipe 
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------#
@@ -20,7 +20,7 @@ layoutHome = html.Div(
                     html.Br(),
                     html.Br(),
                     html.Br(),
-                    html.Div('La Roue des Emotions',style={'background-color':'Black','opacity':'0.65'}, className = "app-header"),
+                    html.Div('La Roue des Emotions',style={'background-color':'Black','opacity':'0.65','font-size':'50px','textAlign':'center'}),
                     html.Section(
                         style={'padding-left':'8vw','padding-right':'8vw','background-color':'Black','opacity':'0.65'}, 
                         children=[
@@ -64,11 +64,11 @@ layout1 = html.Div(
                     style={'padding-left':'7vw','padding-right':'7vw'}, 
                     children=[
                         html.Br(),
-                        dbc.Tabs([
-                        dbc.Tab(table0_brut, label="Kaggle Data",label_style={"color": "#00AEF9"}),
-                        dbc.Tab(table0_pre, label="Kaggle Data NLP",label_style={"color": "#00AEF9",'size':'20px'}),
-                        dbc.Tab(table1_brut, label="Yes Data",label_style={"color": "#00AEF9"}),
-                        dbc.Tab(table1_pre, label="Yes Data NLP",label_style={"color": "#00AEF9",'size':'20px'}),
+                        dbc.Tabs(children=[
+                        dbc.Tab(table0_brut, label="Kaggle Data",tab_style={'background-color':'black','opacity':'0.70'},label_style={"color": "#00AEF9"},loading_state={'is_loading':'True'}),
+                        dbc.Tab(table0_pre, label="Kaggle Data NLP",tab_style={'background-color':'black','opacity':'0.65'},label_style={"color": "#00AEF9"},loading_state={'is_loading':'True'}),
+                        dbc.Tab(table1_brut, label="Yes Data",tab_style={'background-color':'black','opacity':'0.65'},label_style={"color": "#00AEF9"},loading_state={'is_loading':'True'}),
+                        dbc.Tab(table1_pre, label="Yes Data NLP",tab_style={'background-color':'black','opacity':'0.65'},label_style={"color": "#00AEF9"},loading_state={'is_loading':'True'}),
                                     ]),
                         html.Br(),
                         html.Br(),

@@ -26,3 +26,26 @@
 
     color : white;
 }
+
+
+.tab-style {
+    width: inherit;
+    border: none;
+    background: white;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 42px;
+  }
+  
+  .selected-tab-style {
+    width: inherit;
+    box-shadow: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 2px #004A96 solid;
+    background: white;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 42px;
+  }
