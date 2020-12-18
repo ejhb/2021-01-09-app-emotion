@@ -59,7 +59,11 @@ layout1 = html.Div(
             style={'width': '100%','height':'100%','background-position':'center center','background-size': 'cover','color':'white','backgroundImage': 'url(../assets/bg_default_wheel.png)','background-attachment':'fixed'},
             children=[
                 nav_bar,
-                html.Div('', className = "app-header"),
+                html.Br(),
+                html.Br(),
+                html.Br(),
+                html.Br(),
+                html.Div('Data Frame', className = "app-header",style={'color':'black','font-size':'50px'}),
                 html.Section(   
                     style={'padding-left':'7vw','padding-right':'7vw'}, 
                     children=[
@@ -96,7 +100,7 @@ layout1 = html.Div(
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 
 layout2 =  html.Div(
-                style={'width': '100%','height':'100%','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed','background-size': 'cover'},
+                style={'width': '100%','height':'100%','background-position':'center center','background-size': 'cover','color':'white','backgroundImage': 'url(../assets/bg_default_wheel.png)','background-attachment':'fixed'},
                 children=[
                    nav_bar,
                    html.Br(),

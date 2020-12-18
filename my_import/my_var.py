@@ -318,11 +318,11 @@ freq_word_bar = go.Figure(data = freq_p1 , layout = freq_lay_p1)
 
 emotion_hist = go.Figure(px.histogram(df0_brut, x="Emotion", color= "Emotion").update_xaxes(categoryorder ="total descending"))
 emotion_hist.update_layout(
-                 title = 'Histogramme des émotions',
+                 title = 'Histogramme des émotions Kaggle data',
                   yaxis = dict(title = "Nombre d'entrées"),
                   xaxis = dict(title = 'Emotion'),
                   font=dict(
-                        family="sans serif",
+                        family="Courier",
                         size=14,
                         color="white"),
                 paper_bgcolor='rgba(0,0,0,0.70)',
@@ -333,8 +333,16 @@ emotion_hist.update_layout(
 #------------------------------------------------------FIGURE3----------------------------------------------------------------------------#
 emotion2_hist = go.Figure(px.histogram(df1_brut, x="sentiment", color= "sentiment", title="Histogramme Emotion").update_xaxes(categoryorder ="total descending"))
 emotion_hist.update_layout(
-    paper_bgcolor='rgba(0,0,0,0.65)',
-    plot_bgcolor='rgba(0,0,0,0.65)')
+                title = 'Histogramme des émotions Yes data',
+                            yaxis = dict(title = "Nombre d'entrées"),
+                            xaxis = dict(title = 'Emotion'),
+                            font=dict(
+                                    family="Courier",
+                                    size=14,
+                                    color="white"),
+                            paper_bgcolor='rgba(0,0,0,0.70)',
+                            plot_bgcolor='rgba(0,0,0,0.70)')
+
 
 
 #------------------------------------------------------NAVBAR----------------------------------------------------------------------------#
