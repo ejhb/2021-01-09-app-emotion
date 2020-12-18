@@ -41,7 +41,7 @@ X_train, X_test, y_train, y_test = train_test_split(corpus, targets, random_stat
 pipe0 = Pipeline([
     ('vect', CountVectorizer()),
     ('sgd', SGDClassifier()),
-])
+    ])
 pipe0.fit(X_train, y_train)
 
 
@@ -331,17 +331,17 @@ emotion_hist.update_layout(
 
 
 #------------------------------------------------------FIGURE3----------------------------------------------------------------------------#
-emotion2_hist = go.Figure(px.histogram(df1_brut, x="sentiment", color= "sentiment", title="Histogramme Emotion").update_xaxes(categoryorder ="total descending"))
-emotion_hist.update_layout(
-                title = 'Histogramme des émotions Yes data',
-                            yaxis = dict(title = "Nombre d'entrées"),
-                            xaxis = dict(title = 'Emotion'),
-                            font=dict(
-                                    family="Courier",
-                                    size=14,
-                                    color="white"),
-                            paper_bgcolor='rgba(0,0,0,0.70)',
-                            plot_bgcolor='rgba(0,0,0,0.70)')
+# emotion2_hist = go.Figure(px.histogram(df1_brut, x="sentiment", color= "sentiment", title="Histogramme Emotion").update_xaxes(categoryorder ="total descending"))
+# emotion_hist.update_layout(
+#                 title = 'Histogramme des émotions Yes data',
+#                             yaxis = dict(title = "Nombre d'entrées"),
+#                             xaxis = dict(title = 'Emotion'),
+#                             font=dict(
+#                                     family="Courier",
+#                                     size=14,
+#                                     color="white"),
+#                             paper_bgcolor='rgba(0,0,0,0.70)',
+#                             plot_bgcolor='rgba(0,0,0,0.70)')
 
 
 
