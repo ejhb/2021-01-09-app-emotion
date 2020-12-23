@@ -305,7 +305,8 @@ emotion_hist.update_layout(
 
 #------------------------------------------------------NAVBAR----------------------------------------------------------------------------#
 p1_buton = dbc.NavItem(dbc.NavLink("Page 1", href='/apps/page1', active=True, style={'margin-right':'5px'}, className="bootstrap_s_buton"))
-p2_buton = dbc.NavItem(dbc.NavLink("Page 2", href='/apps/page2', active=True, className="bootstrap_s_buton"))
+p2_buton = dbc.NavItem(dbc.NavLink("Page 2", href='/apps/page2', active=True, style={'margin-right':'5px'}, className="bootstrap_s_buton"))
+p3_buton = dbc.NavItem(dbc.NavLink("My git", href='https://github.com/ejhb/app-emotion', active=True, style={'margin-right':'5px'}, className="bootstrap_s_buton"))
 
 nav_bar = dbc.Navbar(
     [
@@ -326,7 +327,8 @@ nav_bar = dbc.Navbar(
             dbc.Nav(style={'margin-left':'auto'},
                     children=[
                 p1_buton,
-                p2_buton
+                p2_buton,
+                p3_buton
                 ]
                 ,pills=True), 
             id="navbar-collapse", 
