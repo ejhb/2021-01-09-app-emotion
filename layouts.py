@@ -38,8 +38,8 @@ layoutHome = html.Div(
                                     md3,
                                     dcc.Markdown('''## Critères de performance
 Un dashboard Dash permettra de visualiser et de comparer les performances issues de différents classifiers.'''),
-                                    md_source,
                                     dbc.Button("Link to my repository git.", color="link",href="https://github.com/ejhb/app-emotion"),
+                                    md_source,
                                     html.Br()
                 ])
     ])
