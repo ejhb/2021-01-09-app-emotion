@@ -1,7 +1,7 @@
 from dash.dependencies import Input, Output , State
 import time
 from app import app
-from layouts import layoutHome,layout1, layout2 ,layout3
+from layouts import layoutHome,layout1, layout2 
 from my_import.my_var import pipe0
 # from my_import.my_var import table0_brut , table0_pre 
 
@@ -16,8 +16,6 @@ def display_page(pathname):
         return layout1
     elif pathname == '/apps/page2':
          return layout2
-    elif pathname == '/apps/page3':
-         return layout3
     else:
         return '404'
         
@@ -32,7 +30,7 @@ def update_output(n_clicks, value):
             return "Please satisfy me"
         else :
             prediction = pipe0.predict(text)    
-        return u'You have entered: \n{}'.format(prediction)
+        return u'Your prediction is : \n{}'.format(prediction)
 
 
 @app.callback(

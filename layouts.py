@@ -14,7 +14,7 @@ from my_import.my_var import md1 , md2 , md3 , md_source ,table0_brut, table0_pr
 
 #-------------------------------------------------------DASH------------------------------------------------------------------------------#
 layoutHome = html.Div(
-                style={'width': '100%','height':'100%','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed','background-size': 'cover'},
+                style={'width': '100%','height':'100%','background-position':'center','background-size': 'cover','color':'white','backgroundImage': 'url(../assets/fond_blue_vague_simplon.png)','background-attachment':'fixed'},
                 children=[
                     nav_bar,
                     html.Br(),
@@ -38,10 +38,6 @@ layoutHome = html.Div(
                                     md3,
                                     dcc.Markdown('''## Critères de performance
 Un dashboard Dash permettra de visualiser et de comparer les performances issues de différents classifiers.'''),
-                                    html.Div([
-                                    dbc.Button("Page 3", color="primary",href="/apps/page2" ,id="loading-button"),
-                                    dbc.Spinner(html.Div(id="loading-output"))]),
-                                    html.Br(),
                                     md_source,
                                     html.Br(),
                 ])
@@ -56,7 +52,7 @@ Un dashboard Dash permettra de visualiser et de comparer les performances issues
 
 
 layout1 = html.Div(
-            style={'width': '100%','height':'100%','background-position':'center center','background-size': 'cover','color':'white','backgroundImage': 'url(../assets/bg_default_wheel.png)','background-attachment':'fixed'},
+            style={'width': '100%','height':'100%','background-position':'center','background-size':'cover','color':'white','backgroundImage': 'url(../assets/fond_bleu_simplon.png)','background-attachment':'fixed'},
             children=[
                 nav_bar,
                 html.Br(),
@@ -100,14 +96,14 @@ layout1 = html.Div(
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 
 layout2 =  html.Div(
-                style={'width': '100%','height':'100%','background-position':'center center','background-size': 'cover','color':'white','backgroundImage': 'url(../assets/bg_default_wheel.png)','background-attachment':'fixed'},
+                style={'width': '100%','height':'100%','background-position':'center center','background-size': 'cover','color':'white','backgroundImage': 'url(../assets/fond_bleu_simplon.png)','background-attachment':'fixed'},
                 children=[
                    nav_bar,
                    html.Br(),
                     html.Br(),
                     html.Br(),
                     html.Br(),
-                html.Div('Dataframe of pipeline result', className = "app-header"),
+                html.Div('Dataframe of pipeline result', className = "app-header",style={'color':'black','font-size':'50px'}),
                 html.Section(   
                     style={'padding-left':'7vw','padding-right':'7vw'}, 
                     children=[
@@ -118,10 +114,10 @@ layout2 =  html.Div(
                         html.Br(),
                         html.Br(),
                         html.Div('Input prediction made of Kaggle\'s dataset model', className = "app-header"),
-                        dbc.Input(id="input", placeholder="Predict an emotion entering a single word", type="text"),
+                        dbc.Input(id="input", placeholder="Predict an emotion entering a sentence ***in progress result may vary***", type="text"),
                         html.Br(),
                         dbc.Button("Submit", color="secondary",id='submit-val', n_clicks=0),
-                        html.P(id="output"),
+                        html.P(id="output",style={'background-color':'black'}),
                         html.Div(id='app-2-display-value'),
                         html.Article(style={'display':'flex','heigh':'15vw','width':'20vw'},
                             children=[               
@@ -144,12 +140,3 @@ layout2 =  html.Div(
                         html.Br(),
                 ])
 ])
-#-----------------------------------------------------------------------------------------------------------------------------------------#
-#                                                   LAYOUT TREE                                                                           #
-#-----------------------------------------------------------------------------------------------------------------------------------------#
-
-layout3 =  html.Div(
-                style={'height': '320vh','color':'white','backgroundImage': 'url(../assets/pexels-jessica-lewis-583846.jpg)','background-attachment':'fixed'}, 
-                children=[])
-
-    

@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------------------------------------------------------------------#
 
 from my_import.my_lib import *
-from my_import.my_func import get_top_n_words, tokenize , run_pipes , print_table
+from my_import.my_func import get_top_n_words , run_pipes , print_table
 #------------------------------------------------------DATAFRAME--------------------------------------------------------------------------#
 df0_brut = pd.read_csv('./data/kaggle_emotion.csv')
 df0_pre = pd.read_csv('./data/kaggle_emotion_pre.csv')
@@ -11,27 +11,9 @@ df1_brut = pd.read_csv('./data/yes_emotion.csv')
 df1_pre = pd.read_csv('./data/yes_emotion_pre.csv')
 df0_pipe = pd.read_csv('./data/kaggle_pre.csv')
 df1_pipe = pd.read_csv('./data/yes_pre.csv')
+df_up = pd.read_csv('./data/word_rank_kaggle_emotion.csv')
 
-# df0_pre.rename(columns={'Unnamed: 0': 'id_auto'}, inplace=True)
-# df0_pre.drop(columns=['id_auto'])
-# # df0_pre = pd.read_csv('./data/emotion_final.csv')
-# # exclude = set(string.punctuation) # exclude = punctuation strings
-# # stop_word = stopwords.words('english') # we choosing stop words of english dict
-# # stop_word_punct = stop_word.extend(exclude) # we add strings punctions to stop word dict
-# # lemma = WordNetLemmatizer()
-# # stemmer = SnowballStemmer("english") # we choosing the language english for the stemmization 
-# # porter = PorterStemmer() 
-# # lancaster=LancasterStemmer()
 
-# # df0_pre['Text'] = df0_pre.apply(lambda row: word_tokenize(row['Text']), axis=1) # Tokenization
-# # df0_pre['Text'] = df0_pre['Text'].apply(lambda x: [item for item in x if item not in stop_word]) # Stop wordization :) coucou anne-laure
-# # df0_pre['Text'] = [[lemma.lemmatize(word) for word in each if word not in stop_word] for each in df0_pre['Text']]  # Lemmization
-# # # df_pre['Text'] = df1['Text'].apply(lambda x: [stemmer.stem(y) for y in x]) # Stem every word. with snowball('english')
-# # # df_pre['Text'] = df1['Text'].apply(lambda x: [porter.stem(y) for y in x]) # Stem every word. with porter
-# # # df_pre['Text'] = df1['Text'].apply(lambda x: [lancaster.stem(y) for y in x]) # Stem every word. with lancaster
-# # dz = df0_pre['Text']
-# # dz = [[' '.join(i)][0] for i in dz] 
-# # df0_pre['Text'] = dz
 #-------------------------------------------------------INPUTPRED--------------------------------------------------------------------------#
 targets = df0_brut['Emotion']
 corpus = df0_brut['Text']
@@ -285,12 +267,6 @@ table1_pipe = dash_table.DataTable(
 #------------------------------------------------------GRAPH------------------------------------------------------------------------------#
 
 #------------------------------------------------------FIGURE1----------------------------------------------------------------------------#
-x = df0_brut.Text
-y = df0_brut.Emotion
-
-freq_top = get_top_n_words(x,"up",100)
-
-df_up = pd.DataFrame(freq_top, columns =['Word','Number of times'])
 y_nbr = df_up['Number of times']
 x_word = df_up['Word']
 
@@ -326,23 +302,6 @@ emotion_hist.update_layout(
                         color="white"),
                 paper_bgcolor='rgba(0,0,0,0.70)',
                 plot_bgcolor='rgba(0,0,0,0.70)')
-
-
-
-#------------------------------------------------------FIGURE3----------------------------------------------------------------------------#
-# emotion2_hist = go.Figure(px.histogram(df1_brut, x="sentiment", color= "sentiment", title="Histogramme Emotion").update_xaxes(categoryorder ="total descending"))
-# emotion_hist.update_layout(
-#                 title = 'Histogramme des émotions Yes data',
-#                             yaxis = dict(title = "Nombre d'entrées"),
-#                             xaxis = dict(title = 'Emotion'),
-#                             font=dict(
-#                                     family="Courier",
-#                                     size=14,
-#                                     color="white"),
-#                             paper_bgcolor='rgba(0,0,0,0.70)',
-#                             plot_bgcolor='rgba(0,0,0,0.70)')
-
-
 
 #------------------------------------------------------NAVBAR----------------------------------------------------------------------------#
 p1_buton = dbc.NavItem(dbc.NavLink("Page 1", href='/apps/page1', active=True, style={'margin-right':'5px'}, className="bootstrap_s_buton"))
